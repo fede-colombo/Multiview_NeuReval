@@ -4,17 +4,17 @@ Extension of stability-based relative clustering validation method implementing 
 ## Table of contents
 1. [Project Overview](#Project_Overview)
 2. [Installation and Requirements](#Installation)
-3. [How to use NeuReval](#Use)
+3. [How to use Multiview_NeuReval](#Use)
     1. [Input structure](#Input)
     2. [Grid-search cross-validation for parameters' tuning](#Grid-search)
-    3. [Run NeuReval with opitmized clustering/classifier/preprocessing algorithms](#NeuReval)
+    3. [Run Multiview_NeuReval with opitmized clustering/classifier/preprocessing algorithms](#NeuReval)
     4. [Compute internal measures](#Internal_measures)
 4. [Example](#Example)
 5. [Notes](#Notes)
 6. [References](#References)
 
 ## 1. Project overview <a name="Project_Overview"></a>
-*Multiview_NeuReval* extends the stability-based clustering validation approach implemented in *NeuReval* (https://github.com/fede-colombo/NeuReval/) by implementing multiview clustering algortihm to find the best clustering solution that best generalize to unseen obsrevations in case of multimodal data. Multiview data, in which each sample is represented by multiple views of distinct features, are often seen in real-world data, and related methods have grown in popularity. Multi-view clustering is a flourishing field in unsupervised learning that considers leveraging multiple views of data objects in order to arrive at a more effective and accurate grouping than what can be achieved by just using one view of data.
+*Multiview_NeuReval* extends the stability-based clustering validation approach implemented in ** (https://github.com/fede-colombo/NeuReval/) by implementing multiview clustering algortihm to find the best clustering solution that best generalize to unseen obsrevations in case of multimodal data. Multiview data, in which each sample is represented by multiple views of distinct features, are often seen in real-world data, and related methods have grown in popularity. Multi-view clustering is a flourishing field in unsupervised learning that considers leveraging multiple views of data objects in order to arrive at a more effective and accurate grouping than what can be achieved by just using one view of data.
 
 This package allows to:
 1. Select any classification algorithm from *sklearn* library;
