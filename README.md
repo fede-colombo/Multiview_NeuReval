@@ -132,5 +132,5 @@ An example of how to perform *Multiview_NeuReval* can be found in the folder **M
 *Multiview_NeuReval* was developed in Python 3.8.10 and tested on ubuntu 20.04. In case of any issues in running *Multiview_NeuReval* on other operating systems (i.e., Windows), you can send an email at the following address: fcolombo.italia@gmail.com
 
 ## 6. References <a name="References"></a>
-Landi, I., Mandelli, V., & Lombardo, M. V. (2021). reval: A Python package to determine best clustering solutions with stability-based relative clustering validation. _Patterns_, 2(4), 100228.
-Perry, Ronan, et al. "mvlearn: Multiview Machine Learning in Python." Journal of Machine Learning Research 22.109 (2021): 1-7.
+- Landi, I., Mandelli, V., & Lombardo, M. V. (2021). reval: A Python package to determine best clustering solutions with stability-based relative clustering validation. _Patterns_, 2(4), 100228.
+- Perry, Ronan, et al. "mvlearn: Multiview Machine Learning in Python." Journal of Machine Learning Research 22.109 (2021): 1-7.
