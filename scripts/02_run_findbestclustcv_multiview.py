@@ -186,7 +186,7 @@ covariates = {'modality_name_01': cov.iloc[:,2:],
 # tr_idx: number of training samples
 # val_idx: number of validation samples
 # nclust: specify the best number of clusters idenfied in the training dataset (i.e., bestncl)
-out, mv_tr_embedding, mv_ts_embedding = findbestclust.evaluate_confounds(data, modalities, covariates, tr_idx, val_idx, nclust=bestncl)
+out, mv_tr_embedding, mv_ts_embedding = findbestclust.evaluate_multimodal(data, modalities, covariates, tr_idx, val_idx, nclust=bestncl)
 print(f"Training ACC: {out.train_acc}, Test ACC: {out.test_acc}")
 
 # Save cluster labels in the validation set
