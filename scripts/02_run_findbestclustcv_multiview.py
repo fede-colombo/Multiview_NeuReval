@@ -149,3 +149,53 @@ db_results = {'db_score': db_score,
 pkl.dump(db_results, open('./db_results_model_name.pkl', 'wb'))
 # To open the results, uncomment the following line
 # pd.read_pickle('./db_results_model_name.pkl')
+
+
+### EXTERNAL VALIDATION
+
+# Import data and covariates files for the test set
+database = 'database_name.xlsx'
+covariates_file = 'covariates_name.xlsx'
+# If there are multiple sheets, specify the name of the current sheet 
+data = pd.read_excel(os.path.join(data_path,database))
+cov = pd.read_excel(os.path.join(data_path, covariates_file))
+# Specify the number of subjects belonging to the training set
+training_dim = 60
+tr_idx = list(range(0,training_dim))
+val_idx = list(range(training_dim-1,len(data)-1))
+
+print(f"Training set sample size: {len(tr_idx)}")
+print(f"Validation set sample size: {len(val_idx)}")
+
+# Define two dictionaries for modalities and covariates variables.
+# For each kind of modality, specify the indeces of the columuns related to the features to be used for clustering
+# You can also specify different covaiates for each kind of modality
+modalities = {'modality_name_01': data.iloc[:,2:124],
+              'modality_name_02': data.iloc[:,124:272],
+              'modality_name_03': data.iloc[:,272:]}
+
+covariates = {'modality_name_01': cov.iloc[:,2:],
+              'modality_name_02': cov.iloc[:,2:-2],
+              'modality_name_03': cov.iloc[:,2:-1]}
+
+# Validate the identified clusters
+# Parameters to be specified:
+# data: dataset
+# modalities: dictionary specifying the features for each modality
+# covariates: dictionary specifying the covariates for each modality
+# tr_idx: number of training samples
+# val_idx: number of validation samples
+# nclust: specify the best number of clusters idenfied in the training dataset (i.e., bestncl)
+out, mv_tr_embedding, mv_ts_embedding = findbestclust.evaluate_confounds(data, modalities, covariates, tr_idx, val_idx, nclust=bestncl)
+print(f"Training ACC: {out.train_acc}, Test ACC: {out.test_acc}")
+
+# Save cluster labels in the validation set
+labels_val = pd.DataFrame(out.test_cllab, columns=['Validation_labels'])
+labels_val.to_csv('Labels_val_model_name.csv', index=True)
+
+# Save embeddings for training and validation sets
+df_mv_tr_embedding = pd.DataFrame(mv_tr_embedding, index=None)
+df_mv_ts_embedding = pd.DataFrame(mv_ts_embedding, index=None)
+df_mv_tr_embedding.to_csv('Embedding_training_model_name.csv', index=None)
+df_mv_ts_embedding.to_csv('Embedding_validation_model_name.csv', index=None)
+
