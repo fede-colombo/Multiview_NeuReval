@@ -194,7 +194,7 @@ class FindBestClustCVMultiview(RelativeValidationMultiview):
         try:
             self.clust_method.n_clusters = nclust
             train_cor_dic, test_cor_dic = super().GLMcorrection_multimodal(modalities,covariates, tr_idx, val_idx)
-            tr_misc, modelfit, labels_tr, mv_tr_embedding = super().train(train_cor_dic)
+            tr_misc, modelfit, labels_tr, mv_tr_embedding = super().train(train_cor_dic, tr_lab)
             ts_misc, labels_ts, mv_ts_embedding = super().test(test_cor_dic, modelfit)
         except TypeError:
             logging.info(f"Not possible to perform evaluation on the test set. "
