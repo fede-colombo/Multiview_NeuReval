@@ -234,7 +234,7 @@ class FindBestClustCVMultiview(RelativeValidationMultiview):
         # (it happens particularly for SpectralClustering and HDBSCAN)
         try:
             train_cor_dic, test_cor_dic = mv_reval.GLMcorrection_multimodal(modalities, covariates, tr_idx, val_idx)
-            miscl_tr, modelfit, tr_labels, mv_tr_embedding = mv_reval.train(train_cor_dic)
+            miscl_tr, modelfit, tr_labels, mv_tr_embedding = mv_reval.train(train_cor_dic, tr_lab)
             miscl_val, val_labels, mv_ts_embedding = mv_reval.test(test_cor_dic, modelfit)
             rndmisc_mean_val = mv_reval.rndlabels_traineval(mv_tr_embedding, mv_ts_embedding, tr_labels, val_labels)
             
