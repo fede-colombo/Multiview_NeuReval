@@ -163,7 +163,7 @@ class FindBestClustCVMultiview(RelativeValidationMultiview):
             label_vect = np.concatenate((out[best_idx][-2], out[best_idx][-1]))
             tr_lab = [lab for _, lab in sorted(zip(idx_vect, label_vect))]
             return metrics, bestncl, tr_lab
-
+    
     def evaluate_multimodal(self, data, modalities, covariates, tr_idx, val_idx, nclust=None, tr_lab=None):
         """
         Method that applies the selected clustering algorithm with the best number of clusters
@@ -207,7 +207,8 @@ class FindBestClustCVMultiview(RelativeValidationMultiview):
         out = Eval(labels_tr, 1 - tr_misc,  labels_ts, 1 - ts_misc)
         return out, mv_tr_embedding, mv_ts_embedding
 
-         
+
+
     @staticmethod
     def _fit_multiview(data_obj, idxs, ncl=None):
         """
@@ -261,9 +262,3 @@ def _confint(vect):
     # interval = 1.96 * math.sqrt((mean * (1 - mean)) / len(vect))
     interval = stats.t.ppf(1 - (0.05 / 2), len(vect) - 1) * (np.std(vect) / math.sqrt(len(vect)))
     return mean, interval
-
-
-    #     Eval = namedtuple('Eval',
-    #                   ['train_cllab', 'train_acc', 'test_cllab', 'test_acc'])
-    #     out = Eval(labels_tr, 1 - tr_misc, labels_ts, 1 - ts_misc)
-    #     return out
