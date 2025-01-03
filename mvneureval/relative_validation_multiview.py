@@ -122,13 +122,15 @@ class RelativeValidationMultiview:
         
         if tr_lab is None:
             clustlab_tr = self.clust_method.fit_predict(mv_tr_data)  # A_k(X)
+            mv_tr_embedding = self.clust_method.embedding_
         else:
             clustlab_tr = tr_lab
+            fitcluster_tr = self.clust_method.fit(mv_tr_data)
+            mv_tr_embedding = self.clust_method.embedding_
         if len([cl for cl in clustlab_tr if cl >= 0]) == 0:
             logging.info(f"No clusters found during training with {self.clust_method}.")
             return None
         
-        mv_tr_embedding = self.clust_method.embedding_
         fitclass_tr = self.class_method.fit(mv_tr_embedding, clustlab_tr)
         classlab_tr = fitclass_tr.predict(mv_tr_embedding)
         misclass = zero_one_loss(clustlab_tr, classlab_tr)
