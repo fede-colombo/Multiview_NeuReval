@@ -14,14 +14,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mvneureval",
-    version="1.1.1",
+    version="1.2.1",
     author="Federica Colombo",
     author_email="fcolombo.italia@gmail.com",
     description="Multiview stability-based relative clustering validation algorithm for multimodal data",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/fede-colombo/Multiview_NeuReval",
-    download_url="https://github.com/fede-colombo/Multiview_NeuReval/releases/tag/v1.1.1",
+    download_url="https://github.com/fede-colombo/Multiview_NeuReval/releases/tag/v1.2.1",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
