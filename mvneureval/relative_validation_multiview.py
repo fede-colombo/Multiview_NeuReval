@@ -82,13 +82,14 @@ class RelativeValidationMultiview:
         test_scaled_dic = {mod:None for mod in modalities}
         trcov_scaled_dic = {mod:None for mod in modalities}
         tscov_scaled_dic = {mod:None for mod in modalities}
-        scaler = StandardScaler()
+        scaler_data = StandardScaler()
+         scaler_cov = StandardScaler()
         
         for mod in modalities:
-            train_scaled_dic[mod] = scaler.fit_transform(X_train_dic[mod])
-            test_scaled_dic[mod] = scaler.fit_transform(X_test_dic[mod])
-            trcov_scaled_dic[mod]= scaler.fit_transform(cov_train_dic[mod])
-            tscov_scaled_dic[mod]= scaler.fit_transform(cov_test_dic[mod])
+            train_scaled_dic[mod] = scaler_data.fit_transform(X_train_dic[mod])
+            test_scaled_dic[mod] = scaler_data.transform(X_test_dic[mod])
+            trcov_scaled_dic[mod]= scaler_cov.fit_transform(cov_train_dic[mod])
+            tscov_scaled_dic[mod]= scaler_cov.transform(cov_test_dic[mod])
     
         # Adjust data for confounds of covariate
         train_cor_dic = {mod:None for mod in modalities}
