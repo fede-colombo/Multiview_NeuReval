@@ -83,7 +83,7 @@ class RelativeValidationMultiview:
         trcov_scaled_dic = {mod:None for mod in modalities}
         tscov_scaled_dic = {mod:None for mod in modalities}
         scaler_data = StandardScaler()
-         scaler_cov = StandardScaler()
+        scaler_cov = StandardScaler()
         
         for mod in modalities:
             train_scaled_dic[mod] = scaler_data.fit_transform(X_train_dic[mod])
